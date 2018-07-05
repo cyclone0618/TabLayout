@@ -36,5 +36,6 @@ class MainActivity: AppCompatActivity() {
             mTabEntities.add(TabEntity(this, mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]))
         }
         tabs.setTabData(mTabEntities, this, R.id.content, mFragments)
+        tabs.showMsg(1,"new")
     }
 }
