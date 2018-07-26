@@ -20,6 +20,6 @@ allprojects {
 
 ```
 dependencies {
-	compile 'com.github.frendyxzc:TabLayout:0.0.6'
+	compile 'com.github.frendyxzc:TabLayout:0.0.9'
 }
 ```
