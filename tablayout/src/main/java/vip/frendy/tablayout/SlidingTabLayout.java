@@ -36,14 +36,14 @@ import vip.frendy.tablayout.widget.MsgView;
 
 /** 滑动TabLayout,对于ViewPager的依赖性强 */
 public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.OnPageChangeListener {
-    private Context mContext;
-    private ViewPager mViewPager;
-    private ArrayList<String> mTitles;
-    private LinearLayout mTabsContainer;
-    private int mCurrentTab;
-    private int mLastTab;
-    private float mCurrentPositionOffset;
-    private int mTabCount;
+    protected Context mContext;
+    protected ViewPager mViewPager;
+    protected ArrayList<String> mTitles;
+    protected LinearLayout mTabsContainer;
+    protected int mCurrentTab;
+    protected int mLastTab;
+    protected float mCurrentPositionOffset;
+    protected int mTabCount;
     /** 用于绘制显示器 */
     private Rect mIndicatorRect = new Rect();
     /** 用于实现滚动居中 */
@@ -59,9 +59,9 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     private static final int STYLE_BLOCK = 2;
     private int mIndicatorStyle = STYLE_NORMAL;
 
-    private float mTabPadding;
-    private boolean mTabSpaceEqual;
-    private float mTabWidth;
+    protected float mTabPadding;
+    protected boolean mTabSpaceEqual;
+    protected float mTabWidth;
 
     /** indicator */
     private int mIndicatorColor;
@@ -97,7 +97,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
 
     private int mLastScrollX;
     private int mHeight;
-    private boolean mSnapOnTabClick;
+    protected boolean mSnapOnTabClick;
 
     public SlidingTabLayout(Context context) {
         this(context, null, 0);
@@ -256,7 +256,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     }
 
     /** 创建并添加tab */
-    private void addTab(final int position, CharSequence title, View tabView) {
+    protected void addTab(final int position, CharSequence title, View tabView) {
         TextView tv_tab_title = (TextView) tabView.findViewById(R.id.tv_tab_title);
         if (tv_tab_title != null) {
             if (title != null) tv_tab_title.setText(title);
@@ -855,8 +855,8 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         return tipView;
     }
 
-    private OnTabSelectListener mListener;
-    private OnPageSelectListener mPageListener;
+    protected OnTabSelectListener mListener;
+    protected OnPageSelectListener mPageListener;
 
     public void setOnTabSelectListener(OnTabSelectListener listener) {
         this.mListener = listener;

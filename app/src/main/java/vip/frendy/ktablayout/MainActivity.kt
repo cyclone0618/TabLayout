@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import com.myxianwen.ngzb.fragment.FragmentCommunity
 import com.myxianwen.ngzb.fragment.FragmentMain
 import kotlinx.android.synthetic.main.activity_main.*
+import vip.frendy.ktablayout.fragment.FragmentDemo
 import vip.frendy.tablayout.entity.TabEntity
 import vip.frendy.tablayout.listener.CustomTabEntity
 import java.util.*
@@ -30,7 +31,7 @@ class MainActivity: AppCompatActivity() {
 
         mFragments.add(FragmentMain.getInstance())
         mFragments.add(FragmentCommunity.getInstance())
-        mFragments.add(FragmentCommunity.getInstance())
+        mFragments.add(FragmentDemo.getInstance())
 
         for (i in mTitles.indices) {
             mTabEntities.add(TabEntity(this, mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]))
