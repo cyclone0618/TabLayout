@@ -86,14 +86,14 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     private float mDividerPadding;
 
     /** title */
-    private static final int TEXT_BOLD_NONE = 0;
-    private static final int TEXT_BOLD_WHEN_SELECT = 1;
-    private static final int TEXT_BOLD_BOTH = 2;
-    private float mTextsize;
-    private int mTextSelectColor;
-    private int mTextUnselectColor;
-    private int mTextBold;
-    private boolean mTextAllCaps;
+    protected static final int TEXT_BOLD_NONE = 0;
+    protected static final int TEXT_BOLD_WHEN_SELECT = 1;
+    protected static final int TEXT_BOLD_BOTH = 2;
+    protected float mTextsize, mTopTextSize;
+    protected int mTextSelectColor;
+    protected int mTextUnselectColor;
+    protected int mTextBold;
+    protected boolean mTextAllCaps;
 
     private int mLastScrollX;
     private int mHeight;
@@ -158,6 +158,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         mDividerPadding = ta.getDimension(R.styleable.SlidingTabLayout_tl_divider_padding, dp2px(12));
 
         mTextsize = ta.getDimension(R.styleable.SlidingTabLayout_tl_textsize, sp2px(14));
+        mTopTextSize = ta.getDimension(R.styleable.SlidingTabLayout_tl_toptextsize, sp2px(12));
         mTextSelectColor = ta.getColor(R.styleable.SlidingTabLayout_tl_textSelectColor, Color.parseColor("#ffffff"));
         mTextUnselectColor = ta.getColor(R.styleable.SlidingTabLayout_tl_textUnselectColor, Color.parseColor("#AAffffff"));
         mTextBold = ta.getInt(R.styleable.SlidingTabLayout_tl_textBold, TEXT_BOLD_NONE);
@@ -297,10 +298,9 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         mTabsContainer.addView(tabView, position, lp_tab);
     }
 
-    private void updateTabStyles() {
+    protected void updateTabStyles() {
         for (int i = 0; i < mTabCount; i++) {
             View v = mTabsContainer.getChildAt(i);
-//            v.setPadding((int) mTabPadding, v.getPaddingTop(), (int) mTabPadding, v.getPaddingBottom());
             TextView tv_tab_title = (TextView) v.findViewById(R.id.tv_tab_title);
             if (tv_tab_title != null) {
                 tv_tab_title.setTextColor(i == mCurrentTab ? mTextSelectColor : mTextUnselectColor);
@@ -428,9 +428,10 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         mTabRect.left = (int) left;
         mTabRect.right = (int) right;
 
-        if (mIndicatorWidth < 0) {   //indicatorWidth小于0时,原jpardogo's PagerSlidingTabStrip
-
-        } else {//indicatorWidth大于0时,圆角矩形以及三角形
+        if (mIndicatorWidth < 0) {
+            //indicatorWidth小于0时,原jpardogo's PagerSlidingTabStrip
+        } else {
+            //indicatorWidth大于0时,圆角矩形以及三角形
             float indicatorLeft = currentTabView.getLeft() + (currentTabView.getWidth() - mIndicatorWidth) / 2;
 
             if (this.mCurrentTab < mTabCount - 1) {
@@ -474,7 +475,6 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         }
 
         //draw indicator line
-
         calcIndicatorRect();
         if (mIndicatorStyle == STYLE_TRIANGLE) {
             if (mIndicatorHeight > 0) {

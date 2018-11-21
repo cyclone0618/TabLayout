@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.myxianwen.ngzb.fragment.FragmentCommunity
 import com.myxianwen.ngzb.fragment.FragmentMain
+import com.myxianwen.ngzb.fragment.FragmentTest
 import kotlinx.android.synthetic.main.activity_main.*
 import vip.frendy.ktablayout.fragment.FragmentDemo
 import vip.frendy.tablayout.entity.TabEntity
@@ -18,11 +19,11 @@ class MainActivity: AppCompatActivity() {
     private val mFragments: ArrayList<Fragment> = ArrayList()
 
     private val mTitles: ArrayList<String> = arrayListOf(
-            "首页", "社区", "我的")
+            "首页", "测试","社区", "我的")
     private val mIconUnselectIds = intArrayOf(
-            R.drawable.tab_home_pre, R.drawable.tab_community_pre, R.drawable.tab_user_pre)
+            R.drawable.tab_home_pre, R.drawable.tab_community_pre, R.drawable.tab_community_pre, R.drawable.tab_user_pre)
     private val mIconSelectIds = intArrayOf(
-            R.drawable.tab_home, R.drawable.tab_community, R.drawable.tab_user)
+            R.drawable.tab_home, R.drawable.tab_community, R.drawable.tab_community, R.drawable.tab_user)
     private val mTabEntities = ArrayList<CustomTabEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +31,7 @@ class MainActivity: AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mFragments.add(FragmentMain.getInstance())
+        mFragments.add(FragmentTest.getInstance())
         mFragments.add(FragmentCommunity.getInstance())
         mFragments.add(FragmentDemo.getInstance())
 
