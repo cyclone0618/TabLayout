@@ -114,4 +114,27 @@ public class SlidingDoubleTabLayout extends SlidingTabLayout {
             }
         }
     }
+
+    protected void updateTabSelection(int position) {
+        for (int i = 0; i < mTabCount; ++i) {
+            View tabView = mTabsContainer.getChildAt(i);
+            final boolean isSelect = i == position;
+
+            TextView text = (TextView) tabView.findViewById(R.id.tv_text);
+            if (text != null) {
+                text.setTextColor(isSelect ? mTextSelectColor : mTextUnselectColor);
+                if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
+                    text.getPaint().setFakeBoldText(isSelect);
+                }
+            }
+
+            TextView textTop = (TextView) tabView.findViewById(R.id.tv_text_top);
+            if (textTop != null) {
+                textTop.setTextColor(isSelect ? mTextSelectColor : mTextUnselectColor);
+                if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
+                    textTop.getPaint().setFakeBoldText(isSelect);
+                }
+            }
+        }
+    }
 }
